@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="!toggled">Sağlıklı Gıda Bilgi</ion-title>
+    <ion-buttons *ngIf="!toggled" slot="primary">
+      <ion-button routerLink="/tabs/arama">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar *ngIf="toggled"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true">
+  <h5>Son Duyurular <a routerLink="duyurular">Tümü</a></h5>
+    <ion-slides pager="true" [options]="slideOptions">
+      <ion-slide *ngFor="let duyuru of duyurular">
+            <ion-card color="primary" (click)="duyuruModal(duyuru.id)" class="slideCard">
+                <ion-card-header>
+                    <ion-card-title class="cuttext">{{ duyuru.baslik }}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content><div class="cuttext" [innerHtml]="duyuru.icerik"></div>
+                </ion-card-content>
+            </ion-card>
+      </ion-slide>
+    </ion-slides>
+
+
+    <h5>Son Haberler <a routerLink="haberler">Tümü</a></h5>
+    <ion-slides pager="true" [options]="slideOptions">
+      <ion-slide *ngFor="let haber of haberler">
+            <ion-card color="danger" (click)="haberModal(haber.id)" class="slideCard">
+                <ion-card-header>
+                    <ion-card-title class="cuttext">{{ haber.baslik }}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content><div class="cuttext" [innerHtml]="haber.icerik"></div>
+                </ion-card-content>
+            </ion-card>
+      </ion-slide>
+    </ion-slides>
+</ion-content>

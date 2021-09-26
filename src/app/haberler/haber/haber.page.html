@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ haber?.baslik }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Kapat</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card class="haber">
+    <ion-card-content>
+      <div class="content" [innerHTML]="haber?.icerik"></div>
+
+    </ion-card-content>
+    <ion-footer>
+      <ion-row>
+        <ion-col center text-center>
+          <div class="ion-text-right">{{ haber?.tarih | date: "dd/MM/yyyy HH:mm"}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+</ion-content>

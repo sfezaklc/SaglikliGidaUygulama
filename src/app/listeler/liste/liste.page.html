@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{liste?.duyuruTarihi | date:'dd/MM/yyyy'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-list >
+    <ion-item  button routerLink="kategori/{{kategori.id}}" *ngFor="let kategori of kategoriler">
+      <ion-label>{{kategori.isim }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

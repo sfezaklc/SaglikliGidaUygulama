@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Haberler</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item button (click)="haberModal(haber.id)" *ngFor="let haber of haberler">
+      <ion-label>{{haber.baslik}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

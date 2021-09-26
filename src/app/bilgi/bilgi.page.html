@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Bilgi
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Bilgi</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+
+    <ion-card-content class="c">
+      Verilerimiz TC Tarım Bakanlığı üzerinden alınmaktadır. Uygulamamız hakkında bilgi almak için aşağıdaki iletişim formunu kullanabilirsiniz.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>İletişim Formu</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form>
+        <ion-item>
+          <ion-label position="floating">Adınız Soyadınız</ion-label>
+          <ion-input type="text" [(ngModel)]="isim" name="isim"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">E-Posta Adresiniz</ion-label>
+          <ion-input type="email" [(ngModel)]="eposta" name="eposta"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Konu</ion-label>
+          <ion-input type="text" [(ngModel)]="konu" name="konu"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mesajınız</ion-label>
+          <ion-textarea [(ngModel)]="mesaj" name="mesaj"></ion-textarea>
+        </ion-item>
+
+        <ion-button (click)="mailGonder()" slot="end" color="primary" type="submit" expand="block">Gönder</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

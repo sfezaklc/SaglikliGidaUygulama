@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{ duyuru?.baslik }}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismissModal()">Kapat</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card class="duyuru">
+        <ion-card-content>
+            <div class="content" [innerHTML]="duyuru?.icerik"></div>
+        </ion-card-content>
+        <ion-footer>
+            <ion-row>
+                <ion-col center text-center>
+                    <div class="ion-text-right">{{ duyuru?.duyuruTarihi | date: "dd/MM/yyyy HH:mm"}}</div>
+                </ion-col>
+            </ion-row>
+        </ion-footer>
+    </ion-card>
+</ion-content>

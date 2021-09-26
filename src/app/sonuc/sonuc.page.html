@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ sonuc?.isim }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div [ngSwitch]="tip">
+        <div *ngSwitchCase="'urun'">
+                <ion-card class="card">
+                    <ion-card-content>
+                        <h2><strong>Kategori:</strong> {{ sonuc?.kategori.isim }}</h2>
+                        <h2><strong>Marka:</strong> {{ sonuc?.marka.isim }}</h2>
+                        <h2><strong>Firma:</strong> {{ sonuc?.marka.firma.isim }}</h2>
+                    </ion-card-content>
+                </ion-card>
+                <ion-text>
+                    <h5 style="padding-left: 20px;">{{ sonuc?.uygunsuzluklar.length }} uygunsuzluk bulundu.</h5>
+                </ion-text>
+                <ion-card class="card1" *ngFor="let u of sonuc?.uygunsuzluklar">
+                    <ion-card-content>
+                        {{ u.tespit }}
+                    </ion-card-content>
+                    <ion-footer>
+                        <ion-row>
+                            <ion-col center text-center>
+                                <div class="ion-text-right">{{u.liste.duyuruTarihi | date:"dd/MM/yyyy"}} tarihli listede bulunuyor.</div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-footer>
+                </ion-card>
+        </div>
+        <div *ngSwitchCase="'marka'">
+            <div *ngIf="sonuc?.uygunsuzluklar">
+                <ion-card class="card">
+                    <ion-card-content>
+                        <h2><strong>Marka:</strong> {{ sonuc.isim }}</h2>
+                        <h2><strong>Firma:</strong> {{ sonuc.firma.isim }}</h2>
+                    </ion-card-content>
+                </ion-card>
+                <ion-text>
+                    <h5 style="padding-left: 20px;">Markaya ait {{ sonuc?.uygunsuzluklar.length }} uygunsuzluk bulundu.</h5>
+                </ion-text>
+                <ion-card class="card1" *ngFor="let u of sonuc?.uygunsuzluklar">
+                    <ion-card-header>
+                        <ion-card-title>
+                            <ion-label>{{ u.urun.isim }}</ion-label>
+                        </ion-card-title>
+                        <ion-card-subtitle>
+                            <ion-label>{{ u.urun.kategori.isim }}</ion-label>
+                        </ion-card-subtitle>
+                    </ion-card-header>
+                    <ion-card-content>
+                        {{ u.tespit }}
+                    </ion-card-content>
+                    <ion-footer>
+                        <ion-row>
+                            <ion-col center text-center>
+                                <div class="ion-text-right">{{u.liste.duyuruTarihi | date:"dd/MM/yyyy"}} tarihli listede bulunuyor.</div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-footer>
+                </ion-card>
+            </div>
+        </div>
+    </div>
+</ion-content>
